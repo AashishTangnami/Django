@@ -1,0 +1,32 @@
+
+{% extends 'base.html' %}
+{% block content %}
+
+<h1> This is my django project</h1>
+<br/>
+
+<br/>
+<br/>
+{% if ticker %}
+  {{ ticker }}
+{% endif %}
+
+{% if api %}
+    {% if api == "Error!" %}
+        There is error with your ticker symbol, try again
+    {% else %}
+        CompanyName:{{api.companyName}}<br/>
+        Price: {{api.latestPrice}} <br/>
+        Close: {{api.previousClose}} <br/>
+        YTD change: {{api.ytdchange}}<br/>
+        Market Cap: {{api.marketCap}}<br/>
+        52wk High: {{api.week52High}}<br/>
+        53wk Low: {{api.week52Low}}<br/>
+
+
+        <!-- {% for key, value in api.items %}
+            {{ key }}: {{ value}}<br/>
+        {% endfor%} -->
+    {% endif%}
+{% endif %}
+{% endblock %}
